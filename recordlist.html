@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordlist</title>
+    <style>
+        .b {
+            background-color: aquamarine;
+            border: 1px solid black;
+            margin: 40px;
+        }
+        
+        .z {
+            margin: 18px;
+        }
+        
+        input {
+            width: 100%;
+        }
+        
+        textarea {
+            width: 100%;
+        }
+        
+        #blood {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="b">
+
+        <div class="z">
+            <h1>User Record List</h1>
+            <form onsubmit="return myfun()">
+                <div class="User">
+                    <label>Username</label>
+                    <br>
+                    <input type="text" name="" id="user_name" class="user-control">
+                    <br>
+                    <span id="showsmessuser" style="color: red;"></span>
+                    <br><br>
+                </div>
+
+
+
+                <div class="Email">
+                    <label>Email address</label>
+                    <br>
+                    <input type="text" name="" id="emailcheck" class="email-control">
+                    <br>
+                    <span id="showsmessemail" style="color: red;"></span>
+                    <br><br>
+
+                </div>
+
+                <div>
+                    <label for="blood">Select your blood group:</label>
+                    <select name="blood" id="blood">
+             <option value="A+">A+</option>
+             <option value="A">A-</option>
+             <option value="B">B+</option>
+             <option value="b-">B-</option>
+             <option value="O+">O+</option>
+             <option value="O">O-</option>
+             <option value="AB">AB+</option>
+             <option value="AB-">AB-</option>
+                  </select>
+                    <br><br>
+                </div>
+
+                <div class="Address">
+                    <label> your address</label>
+                    <br>
+                    <textarea name="address" cols="30" rows="4" id="adres"></textarea>
+                    <span id="shows" style="color: red;"></span>
+                    <br><br>
+                </div>
+
+
+
+
+                <div class="Num">
+                    <label> Enter your phone Number</label>
+                    <br>
+                    <input type="text" name="" id="phonenumber" class="phone-control">
+                    <br>
+                    <span id="showsmessnumber" style="color: red;"></span>
+                    <br><br>
+                </div>
+                <div>
+                    <div class="tex">
+                        <label> Any other details regarding your medical health</label>
+                        <br>
+                        <textarea name="helth" cols="30" rows="4" id="helths"></textarea>
+
+                        <br><br>
+                    </div>
+
+                </div>
+
+                <button class="btn-submit" value="submit">submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        function myfun() {
+            var username = document.getElementById('user_name').value;
+            var correct_way = /^[A-Za-z_]+$/;
+
+            var emailcheck = document.getElementById('emailcheck').value;
+            var patternemail = /^[A-Za-z._]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+
+            var phonenumber = document.getElementById('phonenumber').value;
+
+
+
+
+            //user start//
+            if (username == "") {
+                document.getElementById('showsmessuser').innerHTML = "please fill username";
+                return false;
+            }
+            if (username.length < 3) {
+                document.getElementById('showsmessuser').innerHTML = "Username must be 3character";
+                return false;
+            }
+            if (username.length > 20) {
+                document.getElementById('showsmessuser').innerHTML = "Username must be less than 20character";
+                return false;
+            }
+            if (username.match(correct_way)) {
+                document.getElementById('showsmessuser').innerHTML = "Username name coreect";
+
+            } else {
+                document.getElementById('showsmessuser').innerHTML = "Username only alphabets are allowed";
+
+                return false;
+            }
+            //user end//
+
+            //email id start//
+            if (patternemail.test(emailcheck)) {
+                document.getElementById('showsmessemail').innerHTML = "Email id is correct";
+
+            } else {
+                document.getElementById('showsmessemail').innerHTML = "Email id is not correct";
+                return false;
+            }
+            //email id end//
+
+            //phone start//
+            if (phonenumber == "") {
+                document.getElementById('showsmessnumber').innerHTML = "please fill Phone Number";
+                return false;
+            }
+            if (isNaN(phonenumber)) {
+                document.getElementById('showsmessnumber').innerHTML = "please fill only number are allow";
+                return false;
+            }
+            if (phonenumber.length < 10) {
+                document.getElementById('showsmessnumber').innerHTML = "phone number must be  10 digit";
+                return false;
+            }
+            if (phonenumber.length > 10) {
+                document.getElementById('showsmessnumber').innerHTML = "phone number must be  10 digit";
+                return false;
+            }
+            //phone end//
+
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
